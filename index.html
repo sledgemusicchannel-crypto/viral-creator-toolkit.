@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viral Creator Toolkit</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(99, 102, 241, 0.5);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen font-sans flex flex-col">
+
+  <!-- Header / Navbar -->
+  <header class="border-b border-gray-800 bg-gray-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-indigo-600 text-white p-2 rounded-xl">
+          <i class="fa-solid fa-bolt text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg text-white leading-tight">Viral Creator Toolkit</h1>
+          <p class="text-xs text-gray-400">Content Optimization Suite</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full">
+          v1.0.0
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 space-y-6">
+
+    <!-- Tab Navigation -->
+    <div class="flex space-x-2 border-b border-gray-800 overflow-x-auto pb-2 custom-scrollbar">
+      <button onclick="switchTab('hooks')" id="tab-hooks" class="tab-btn px-4 py-2 rounded-lg font-medium text-sm flex items-center space-x-2 bg-indigo-600 text-white">
+        <i class="fa-solid fa-fire text-amber-400"></i>
+        <span>Hook Generator</span>
+      </button>
+      <button onclick="switchTab('hashtags')" id="tab-hashtags" class="tab-btn px-4 py-2 rounded-lg font-medium text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-hashtag text-blue-400"></i>
+        <span>Hashtag Helper</span>
+      </button>
+      <button onclick="switchTab('counter')" id="tab-counter" class="tab-btn px-4 py-2 rounded-lg font-medium text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-[#]"></i>
+        <span>Character Counter</span>
+      </button>
+      <button onclick="switchTab('script')" id="tab-script" class="tab-btn px-4 py-2 rounded-lg font-medium text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-scroll text-emerald-400"></i>
+        <span>Script Builder</span>
+      </button>
+      <button onclick="switchTab('drafts')" id="tab-drafts" class="tab-btn px-4 py-2 rounded-lg font-medium text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-bookmark text-purple-400"></i>
+        <span>Saved Drafts (<span id="draft-count">0</span>)</span>
+      </button>
+    </div>
+
+    <!-- 1. VIRAL HOOK GENERATOR SECTION -->
+    <section id="section-hooks" class="tab-content space-y-4">
+      <div class="bg-gray-800/50 border border-gray-700/60 rounded-xl p-5">
+        <h2 class="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-lightbulb text-amber-400"></i>
+          High-Retention Video Hooks
+        </h2>
+        <p class="text-sm text-gray-400 mb-4">Select a category to quickly generate battle-tested viral hooks for your short-form videos.</p>
+        
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button onclick="filterHooks('all')" class="hook-cat-btn px-3 py-1.5 rounded-md text-xs font-medium bg-indigo-600 text-white">All</button>
+          <button onclick="filterHooks('curiosity')" class="hook-cat-btn px-3 py-1.5 rounded-md text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600">Curiosity</button>
+          <button onclick="filterHooks('story')" class="hook-cat-btn px-3 py-1.5 rounded-md text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600">Storytelling</button>
+          <button onclick="filterHooks('controversial')" class="hook-cat-btn px-3 py-1.5 rounded-md text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600">Controversial</button>
+          <button onclick="filterHooks('educational')" class="hook-cat-btn px-3 py-1.5 rounded-md text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600">Value/Educational</button>
+        </div>
+
+        <div id="hooks-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <!-- Dynamically Populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. HASHTAG HELPER SECTION -->
+    <section id="section-hashtags" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/50 border border-gray-700/60 rounded-xl p-5">
+        <h2 class="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-hashtag text-blue-400"></i>
+          Hashtag & Tag Generator
+        </h2>
+        <p class="text-sm text-gray-400 mb-4">Click preset categories or type keywords to quickly generate copyable hashtag sets.</p>
+
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button onclick="generateHashtags('viral')" class="px-3 py-1.5 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-md text-xs font-medium hover:bg-blue-600/30">#Viral & Trending</button>
+          <button onclick="generateHashtags('tech')" class="px-3 py-1.5 bg-purple-600/20 text-purple-400 border border-purple-500/30 rounded-md text-xs font-medium hover:bg-purple-600/30">#Tech & Coding</button>
+          <button onclick="generateHashtags('business')" class="px-3 py-1.5 bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 rounded-md text-xs font-medium hover:bg-emerald-600/30">#Business & Finance</button>
+          <button onclick="generateHashtags('lifestyle')" class="px-3 py-1.5 bg-amber-600/20 text-amber-400 border border-amber-500/30 rounded-md text-xs font-medium hover:bg-amber-600/30">#Lifestyle & Vlogs</button>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-lg p-4 space-y-3">
+          <textarea id="hashtag-output" rows="4" class="w-full bg-transparent text-sm text-gray-200 focus:outline-none resize-none" placeholder="Selected hashtags will appear here..."></textarea>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-800">
+            <span id="hashtag-count-display" class="text-xs text-gray-400">0 hashtags</span>
+            <button onclick="copyToClipboard('hashtag-output')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-medium hover:bg-indigo-700 flex items-center gap-2">
+              <i class="fa-regular fa-copy"></i> Copy Hashtags
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CHARACTER & LIMIT COUNTER SECTION -->
+    <section id="section-counter" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/50 border border-gray-700/60 rounded-xl p-5">
+        <h2 class="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-align-left text-indigo-400"></i>
+          Platform Caption & Character Counter
+        </h2>
+        <p class="text-sm text-gray-400 mb-4">Validate your caption length against major social media platform limits live.</p>
+
+        <textarea id="counter-input" oninput="updateCounts()" rows="5" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-4 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 resize-none" placeholder="Type or paste your video caption here..."></textarea>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+          <!-- TikTok -->
+          <div class="bg-gray-900 border border-gray-700/80 rounded-lg p-3">
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
+              <span class="font-semibold text-gray-300">TikTok</span>
+              <span id="tt-limit">0 / 2200</span>
+            </div>
+            <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+              <div id="tt-bar" class="bg-emerald-500 h-full w-0"></div>
+            </div>
+          </div>
+          <!-- Instagram -->
+          <div class="bg-gray-900 border border-gray-700/80 rounded-lg p-3">
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
+              <span class="font-semibold text-gray-300">Instagram</span>
+              <span id="ig-limit">0 / 2200</span>
+            </div>
+            <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+              <div id="ig-bar" class="bg-emerald-500 h-full w-0"></div>
+            </div>
+          </div>
+          <!-- YouTube Shorts -->
+          <div class="bg-gray-900 border border-gray-700/80 rounded-lg p-3">
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
+              <span class="font-semibold text-gray-300">YT Title</span>
+              <span id="yt-limit">0 / 100</span>
+            </div>
+            <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+              <div id="yt-bar" class="bg-emerald-500 h-full w-0"></div>
+            </div>
+          </div>
+          <!-- X / Twitter -->
+          <div class="bg-gray-900 border border-gray-700/80 rounded-lg p-3">
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
+              <span class="font-semibold text-gray-300">X (Twitter)</span>
+              <span id="x-limit">0 / 280</span>
+            </div>
+            <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+              <div id="x-bar" class="bg-emerald-500 h-full w-0"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button onclick="saveCurrentDraft()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-medium hover:bg-indigo-700 flex items-center gap-2">
+            <i class="fa-solid fa-bookmark"></i> Save as Draft
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SCRIPT OUTLINE BUILDER SECTION -->
+    <section id="section-script" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/50 border border-gray-700/60 rounded-xl p-5">
+        <h2 class="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-scroll text-emerald-400"></i>
+          Short-Form Video Script Outline Builder
+        </h2>
+        <p class="text-sm text-gray-400 mb-4">Structure your short video into a proven retention formula: Hook, Value, and Call-to-Action.</p>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-amber-400 mb-1">1. THE HOOK (0-3s)</label>
+            <input id="script-hook" type="text" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500" placeholder="e.g. Stop making this huge mistake when editing videos..." />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-blue-400 mb-1">2. THE VALUE / BODY (3-45s)</label>
+            <textarea id="script-body" rows="4" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 resize-none" placeholder="Point 1: ...&#10;Point 2: ...&#10;Point 3: ..."></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-emerald-400 mb-1">3. CALL TO ACTION (CTA)</label>
+            <input id="script-cta" type="text" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500" placeholder="e.g. Follow for more daily creator tips!" />
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center pt-4">
+          <button onclick="clearScript()" class="text-xs text-gray-400 hover:text-red-400">Clear Fields</button>
+          <button onclick="saveScriptDraft()" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-medium hover:bg-emerald-700 flex items-center gap-2">
+            <i class="fa-solid fa-floppy-disk"></i> Save Complete Script
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SAVED DRAFTS SECTION -->
+    <section id="section-drafts" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/50 border border-gray-700/60 rounded-xl p-5">
+        <h2 class="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-bookmark text-purple-400"></i>
+          Your Saved Local Drafts
+        </h2>
+        <p class="text-sm text-gray-400 mb-4">Drafts are saved locally in your device's browser memory for fast access.</p>
+
+        <div id="drafts-list" class="space-y-3">
+          <!-- Dynamically Rendered -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-indigo-600 text-white px-4 py-3 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 text-sm z-50">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // --- Data & State ---
+    const hooksData = [
+      { category: 'curiosity', text: 'If you are doing [topic], you are probably doing it wrong.' },
+      { category: 'curiosity', text: 'This secret feature in [tool/app] will save you hours.' },
+      { category: 'story', text: 'Nobody talks about what happens when you actually achieve [goal]...' },
+      { category: 'story', text: 'I tried [strategy] for 30 days and here is what happened.' },
+      { category: 'controversial', text: 'Unpopular opinion: Stop focusing on [common advice].' },
+      { category: 'controversial', text: 'Why most creators fail at [niche] in 2026.' },
+      { category: 'educational', text: 'Here are 3 quick steps to master [skill] starting today.' },
+      { category: 'educational', text: 'The exact framework I use to create [result] every single week.' }
+    ];
+
+    const hashtagPresets = {
+      viral: ['#viral', '#trending', '#fyp', '#foryou', '#creator', '#contentcreator', '#reels', '#shorts'],
+      tech: ['#tech', '#developer', '#coding', '#software', '#webdev', '#android', '#github', '#ai'],
+      business: ['#entrepreneur', '#business', '#marketing', '#productivity', '#sidehustle', '#success'],
+      lifestyle: ['#vlog', '#dailyvlog', '#lifestyle', '#mindset', '#motivation', '#inspiration']
+    };
+
+    let drafts = JSON.parse(localStorage.getItem('viral_creator_drafts') || '[]');
+
+    // --- Tab Switcher ---
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white');
+        btn.classList.add('bg-gray-800', 'text-gray-400');
+      });
+
+      document.getElementById(`section-${tabName}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-${tabName}`);
+      activeBtn.classList.remove('bg-gray-800', 'text-gray-400');
+      activeBtn.classList.add('bg-indigo-600', 'text-white');
+
+      if (tabName === 'drafts') renderDrafts();
+    }
+
+    // --- Hooks Generator ---
+    function renderHooks(filter = 'all') {
+      const container = document.getElementById('hooks-container');
+      container.innerHTML = '';
+
+      const filtered = filter === 'all' ? hooksData : hooksData.filter(h => h.category === filter);
+      filtered.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'bg-gray-900 border border-gray-700/80 p-4 rounded-lg flex justify-between items-center gap-3 hover:border-indigo-500/50 transition-all';
+        card.innerHTML = `
+          <p class="text-sm text-gray-200">${h.text}</p>
+          <button onclick="copyText('${h.text.replace(/'/g, "\\'")}')" class="px-3 py-1.5 bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 rounded-md text-xs font-medium shrink-0">
+            Copy
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterHooks(cat) {
+      renderHooks(cat);
+    }
+
+    // --- Hashtags ---
+    function generateHashtags(key) {
+      const tags = hashtagPresets[key] || [];
+      const textarea = document.getElementById('hashtag-output');
+      textarea.value = tags.join(' ');
+      document.getElementById('hashtag-count-display').innerText = `${tags.length} hashtags`;
+    }
+
+    // --- Character Counter ---
+    function updateCounts() {
+      const text = document.getElementById('counter-input').value;
+      const len = text.length;
+
+      updateBar('tt', len, 2200);
+      updateBar('ig', len, 2200);
+      updateBar('yt', len, 100);
+      updateBar('x', len, 280);
+    }
+
+    function updateBar(platform, len, limit) {
+      const limitEl = document.getElementById(`${platform}-limit`);
+      const barEl = document.getElementById(`${platform}-bar`);
+      limitEl.innerText = `${len} / ${limit}`;
+
+      const pct = Math.min((len / limit) * 100, 100);
+      barEl.style.width = `${pct}%`;
+
+      if (len > limit) {
+        barEl.className = 'bg-red-500 h-full transition-all duration-200';
+      } else {
+        barEl.className = 'bg-emerald-500 h-full transition-all duration-200';
+      }
+    }
+
+    // --- Script Builder ---
+    function saveScriptDraft() {
+      const hook = document.getElementById('script-hook').value;
+      const body = document.getElementById('script-body').value;
+      const cta = document.getElementById('script-cta').value;
+
+      if (!hook && !body) {
+        showToast('Please enter script content first.');
+        return;
+      }
+
+      const fullScript = `[HOOK]\n${hook}\n\n[BODY]\n${body}\n\n[CTA]\n${cta}`;
+      drafts.push({ id: Date.now(), title: `Script: ${hook.substring(0, 20) || 'Untitled'}...`, content: fullScript });
+      saveDraftsStorage();
+      showToast('Script saved to drafts!');
+      clearScript();
+    }
+
+    function clearScript() {
+      document.getElementById('script-hook').value = '';
+      document.getElementById('script-body').value = '';
+      document.getElementById('script-cta').value = '';
+    }
+
+    // --- Drafts Management ---
+    function saveCurrentDraft() {
+      const text = document.getElementById('counter-input').value;
+      if (!text.trim()) {
+        showToast('Draft is empty.');
+        return;
+      }
+      drafts.push({ id: Date.now(), title: text.substring(0, 25) + '...', content: text });
+      saveDraftsStorage();
+      showToast('Saved to drafts!');
+    }
+
+    function saveDraftsStorage() {
+      localStorage.setItem('viral_creator_drafts', JSON.stringify(drafts));
+      document.getElementById('draft-count').innerText = drafts.length;
+    }
+
+    function renderDrafts() {
+      const list = document.getElementById('drafts-list');
+      list.innerHTML = '';
+
+      if (drafts.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500 italic">No saved drafts yet.</p>';
+        return;
+      }
+
+      drafts.forEach(d => {
+        const item = document.createElement('div');
+        item.className = 'bg-gray-900 border border-gray-700/80 p-4 rounded-lg flex justify-between items-start gap-4';
+        item.innerHTML = `
+          <div class="space-y-1">
+            <h4 class="text-sm font-semibold text-indigo-400">${d.title}</h4>
+            <p class="text-xs text-gray-300 whitespace-pre-wrap">${d.content}</p>
+          </div>
+          <div class="flex gap-2 shrink-0">
+            <button onclick="copyText('${d.content.replace(/'/g, "\\'").replace(/\n/g, '\\n')}')" class="px-2.5 py-1.5 bg-gray-800 text-gray-300 hover:text-white text-xs rounded">Copy</button>
+            <button onclick="deleteDraft(${d.id})" class="px-2.5 py-1.5 bg-red-900/30 text-red-400 hover:bg-red-900/50 text-xs rounded">Delete</button>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function deleteDraft(id) {
+      drafts = drafts.filter(d => d.id !== id);
+      saveDraftsStorage();
+      renderDrafts();
+      showToast('Draft deleted.');
+    }
+
+    // --- Helpers & Toasts ---
+    function copyText(str) {
+      navigator.clipboard.writeText(str).then(() => showToast('Copied to clipboard!'));
+    }
+
+    function copyToClipboard(id) {
+      const val = document.getElementById(id).value;
+      if (val) copyText(val);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // Init
+    renderHooks();
+    saveDraftsStorage();
+  </script>
+</body>
+</html>
