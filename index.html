@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <title>Viral Creator Toolkit</title>
+  <title>Apex Mobility | Viral Creator Suite</title>
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -55,14 +55,14 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-600/30">
-          <i class="fa-solid fa-bolt text-base"></i>
+          <i class="fa-solid fa-crown text-base text-amber-300"></i>
         </div>
         <div>
           <h1 class="font-bold text-base md:text-lg text-white leading-tight flex items-center gap-2">
-            Viral Creator Toolkit
-            <span class="text-[10px] font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full">Pro v1.2</span>
+            Apex Mobility System
+            <span class="text-[10px] font-semibold px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full">vidIQ Pro+</span>
           </h1>
-          <p class="text-xs text-gray-400">Everyday Content Optimization & Hook Suite</p>
+          <p class="text-xs text-gray-400">Ultimate AI SEO, Story, Song & Thumbnail Studio</p>
         </div>
       </div>
       <div class="flex items-center space-x-2">
@@ -79,42 +79,110 @@
 
     <!-- Tab Navigation -->
     <div class="flex space-x-2 border-b border-gray-800 overflow-x-auto pb-2 custom-scrollbar">
-      <button onclick="switchTab('hooks')" id="tab-hooks" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-indigo-600 text-white shrink-0 shadow-md transition">
-        <i class="fa-solid fa-fire text-amber-400"></i>
-        <span>Hook Generator</span>
+      <button onclick="switchTab('seo')" id="tab-seo" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-indigo-600 text-white shrink-0 shadow-md transition">
+        <i class="fa-solid fa-chart-line text-emerald-400"></i>
+        <span>vidIQ SEO & Optimizer</span>
       </button>
-      <button onclick="switchTab('hashtags')" id="tab-hashtags" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
-        <i class="fa-solid fa-hashtag text-blue-400"></i>
-        <span>Hashtag Helper</span>
+      <button onclick="switchTab('hooks')" id="tab-hooks" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
+        <i class="fa-solid fa-fire text-amber-400"></i>
+        <span>Viral Hooks</span>
+      </button>
+      <button onclick="switchTab('story')" id="tab-story" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
+        <i class="fa-solid fa-feather-pointed text-purple-400"></i>
+        <span>Story & Script Writer</span>
+      </button>
+      <button onclick="switchTab('songwriter')" id="tab-songwriter" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
+        <i class="fa-solid fa-music text-pink-400"></i>
+        <span>Song Writer</span>
+      </button>
+      <button onclick="switchTab('thumbnail')" id="tab-thumbnail" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
+        <i class="fa-solid fa-image text-cyan-400"></i>
+        <span>Thumbnail Studio</span>
       </button>
       <button onclick="switchTab('counter')" id="tab-counter" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
         <i class="fa-solid fa-align-left text-indigo-400"></i>
         <span>Character Counter</span>
       </button>
-      <button onclick="switchTab('script')" id="tab-script" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
-        <i class="fa-solid fa-scroll text-emerald-400"></i>
-        <span>Script Builder</span>
-      </button>
       <button onclick="switchTab('drafts')" id="tab-drafts" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-xs md:text-sm flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white shrink-0 transition">
-        <i class="fa-solid fa-bookmark text-purple-400"></i>
-        <span>Saved Drafts (<span id="draft-count">0</span>)</span>
+        <i class="fa-solid fa-bookmark text-amber-400"></i>
+        <span>Saved (<span id="draft-count">0</span>)</span>
       </button>
     </div>
 
-    <!-- 1. VIRAL HOOK GENERATOR SECTION -->
-    <section id="section-hooks" class="tab-content space-y-4">
+    <!-- 1. vidIQ SEO & KEYWORD OPTIMIZER SECTION -->
+    <section id="section-seo" class="tab-content space-y-4">
+      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
+        <div>
+          <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-emerald-400"></i>
+            vidIQ Pro Keyword & SEO Metadata Engine
+          </h2>
+          <p class="text-xs md:text-sm text-gray-400">Type any video topic or keyword to analyze competition score, search volume, and auto-generate high-CTR titles, descriptions, and tag sets.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input type="text" id="seo-keyword-input" placeholder="e.g. How to grow on YouTube in 2026..." class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 shadow-inner">
+          <button onclick="runSeoAnalysis()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 shrink-0">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze & Generate SEO
+          </button>
+        </div>
+
+        <!-- SEO Metrics Dashboard (hidden initially) -->
+        <div id="seo-results-area" class="hidden space-y-4 pt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3 text-center">
+              <span class="text-xs text-gray-400 block mb-1">Search Volume</span>
+              <span id="metric-volume" class="text-lg font-bold text-emerald-400">88/100 (Very High)</span>
+            </div>
+            <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3 text-center">
+              <span class="text-xs text-gray-400 block mb-1">Competition Score</span>
+              <span id="metric-competition" class="text-lg font-bold text-amber-400">Medium</span>
+            </div>
+            <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3 text-center">
+              <span class="text-xs text-gray-400 block mb-1">Overall SEO Score</span>
+              <span id="metric-overall" class="text-lg font-bold text-indigo-400">92/100 (Optimized)</span>
+            </div>
+          </div>
+
+          <!-- Generated SEO Title Options -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold text-gray-300">High-CTR Clickable Titles</label>
+            <div id="seo-titles-list" class="space-y-2"><!-- Populated --></div>
+          </div>
+
+          <!-- Generated Description & Hashtags -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <label class="block text-xs font-semibold text-gray-300">Optimized Description & Hashtag Bundle</label>
+              <button onclick="copyToClipboard('seo-desc-output')" class="text-xs text-indigo-400 hover:text-indigo-300"><i class="fa-regular fa-copy"></i> Copy Description</button>
+            </div>
+            <textarea id="seo-desc-output" rows="5" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 text-xs text-gray-200 focus:outline-none resize-none custom-scrollbar"></textarea>
+          </div>
+
+          <!-- Generated Tags -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold text-gray-300">YouTube / TikTok Tag Strings (Comma Separated)</label>
+            <div class="flex gap-2">
+              <input type="text" id="seo-tags-output" readonly class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-300">
+              <button onclick="copyToClipboard('seo-tags-output')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-xs font-medium transition">Copy Tags</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. VIRAL HOOK GENERATOR SECTION -->
+    <section id="section-hooks" class="tab-content hidden space-y-4">
       <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
             <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
-              <i class="fa-solid fa-lightbulb text-amber-400"></i>
+              <i class="fa-solid fa-fire text-amber-400"></i>
               High-Retention Video Hooks
             </h2>
-            <p class="text-xs md:text-sm text-gray-400">Select a category to quickly generate battle-tested viral hooks for short-form videos.</p>
+            <p class="text-xs md:text-sm text-gray-400">Select a category or search keywords to generate battle-tested viral hooks.</p>
           </div>
-          <div class="relative">
-            <input type="text" id="hook-search" oninput="renderHooks()" placeholder="Search hook keywords..." class="w-full md:w-56 bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-indigo-500">
-          </div>
+          <input type="text" id="hook-search" oninput="renderHooks()" placeholder="Search hooks..." class="w-full md:w-56 bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-gray-200 focus:outline-none focus:border-indigo-500">
         </div>
         
         <div class="flex flex-wrap gap-2 mb-4">
@@ -122,54 +190,160 @@
           <button onclick="filterHooks('curiosity')" class="hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600 transition">Curiosity</button>
           <button onclick="filterHooks('story')" class="hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600 transition">Storytelling</button>
           <button onclick="filterHooks('controversial')" class="hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600 transition">Controversial</button>
-          <button onclick="filterHooks('educational')" class="hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600 transition">Value/Educational</button>
+          <button onclick="filterHooks('educational')" class="hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-700 text-gray-300 hover:bg-gray-600 transition">Educational</button>
         </div>
 
-        <div id="hooks-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <!-- Dynamically Populated -->
+        <div id="hooks-container" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+    </section>
+
+    <!-- 3. STORY & SCRIPT WRITER SECTION -->
+    <section id="section-story" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
+        <div>
+          <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
+            <i class="fa-solid fa-feather-pointed text-purple-400"></i>
+            AI Story & Script Writer
+          </h2>
+          <p class="text-xs md:text-sm text-gray-400">Write gripping narrative stories, motivational scripts, or cinematic video outlines instantly.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Story Topic / Core Premise</label>
+            <input type="text" id="story-topic" placeholder="e.g. A lonely coder discovers an AI message from the future..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Genre / Style</label>
+            <select id="story-genre" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+              <option value="motivational">Motivational & Philosophical</option>
+              <option value="scifi">Sci-Fi / Thriller Story</option>
+              <option value="drama">Emotional Drama / Life Lesson</option>
+              <option value="documentary">Cinematic Documentary Script</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="generateAiStory()" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Full Story & Script
+        </button>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-xl p-4 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-gray-400">Generated Narrative Output</span>
+            <button onclick="copyToClipboard('story-output')" class="text-xs text-purple-400 hover:text-purple-300"><i class="fa-regular fa-copy"></i> Copy Story</button>
+          </div>
+          <textarea id="story-output" rows="8" class="w-full bg-transparent text-xs md:text-sm text-gray-200 focus:outline-none resize-none custom-scrollbar" placeholder="Your generated story or narration script will appear here..."></textarea>
+          <div class="flex justify-end pt-2 border-t border-gray-800">
+            <button onclick="saveStoryAsDraft()" class="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-medium hover:bg-indigo-700 transition">Save as Draft</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. HASHTAG HELPER SECTION -->
-    <section id="section-hashtags" class="tab-content hidden space-y-4">
-      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl">
-        <h2 class="text-base md:text-lg font-semibold text-white mb-1 flex items-center gap-2">
-          <i class="fa-solid fa-hashtag text-blue-400"></i>
-          Hashtag & Tag Generator
-        </h2>
-        <p class="text-xs md:text-sm text-gray-400 mb-4">Click preset categories or pick custom tags to instantly build optimized copyable hashtag blocks.</p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <button onclick="generateHashtags('viral')" class="px-3 py-1.5 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-lg text-xs font-medium hover:bg-blue-600/30 transition">#Viral & Trending</button>
-          <button onclick="generateHashtags('tech')" class="px-3 py-1.5 bg-purple-600/20 text-purple-400 border border-purple-500/30 rounded-lg text-xs font-medium hover:bg-purple-600/30 transition">#Tech & Coding</button>
-          <button onclick="generateHashtags('business')" class="px-3 py-1.5 bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 rounded-lg text-xs font-medium hover:bg-emerald-600/30 transition">#Business & Finance</button>
-          <button onclick="generateHashtags('lifestyle')" class="px-3 py-1.5 bg-amber-600/20 text-amber-400 border border-amber-500/30 rounded-lg text-xs font-medium hover:bg-amber-600/30 transition">#Lifestyle & Vlogs</button>
+    <!-- 4. SONG WRITER SECTION -->
+    <section id="section-songwriter" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
+        <div>
+          <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
+            <i class="fa-solid fa-music text-pink-400"></i>
+            Professional Song & Lyric Writer
+          </h2>
+          <p class="text-xs md:text-sm text-gray-400">Write radio-ready verses, choruses, and bridges for rap, pop, hip-hop, or acoustic tracks.</p>
         </div>
 
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Song Theme / Vibe</label>
+            <input type="text" id="song-theme" placeholder="e.g. Grinding for success, overcoming obstacles..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Musical Genre</label>
+            <select id="song-genre" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+              <option value="hiphop">Hip-Hop / Rap (Punchlines & Flow)</option>
+              <option value="pop">Pop Anthem (Catchy Hook)</option>
+              <option value="rb">R&B / Soul (Emotional Melody)</option>
+              <option value="acoustic">Acoustic / Folk (Storytelling)</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="generateSongLyrics()" class="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-pink-600/20">
+          <i class="fa-solid fa-microphone-lines"></i> Generate Song Lyrics (Verse, Chorus, Bridge)
+        </button>
+
         <div class="bg-gray-900 border border-gray-700 rounded-xl p-4 space-y-3">
-          <textarea id="hashtag-output" rows="4" class="w-full bg-transparent text-sm text-gray-200 focus:outline-none resize-none custom-scrollbar" placeholder="Selected hashtags will appear here..."></textarea>
-          <div class="flex flex-col sm:flex-row justify-between items-center pt-2 border-t border-gray-800 gap-2">
-            <span id="hashtag-count-display" class="text-xs text-gray-400">0 hashtags</span>
-            <div class="flex items-center gap-2 w-full sm:w-auto">
-              <button onclick="document.getElementById('hashtag-output').value=''; document.getElementById('hashtag-count-display').innerText='0 hashtags';" class="px-3 py-2 bg-gray-800 text-gray-400 hover:text-white rounded-lg text-xs font-medium transition">Clear</button>
-              <button onclick="copyToClipboard('hashtag-output')" class="flex-1 sm:flex-none px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-medium hover:bg-indigo-700 flex items-center justify-center gap-2 transition shadow-lg shadow-indigo-600/20">
-                <i class="fa-regular fa-copy"></i> Copy Hashtags
-              </button>
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-gray-400">Generated Lyrics Output</span>
+            <button onclick="copyToClipboard('song-output')" class="text-xs text-pink-400 hover:text-pink-300"><i class="fa-regular fa-copy"></i> Copy Lyrics</button>
+          </div>
+          <textarea id="song-output" rows="8" class="w-full bg-transparent text-xs md:text-sm text-gray-200 focus:outline-none resize-none custom-scrollbar" placeholder="Your song lyrics will appear here..."></textarea>
+          <div class="flex justify-end pt-2 border-t border-gray-800">
+            <button onclick="saveSongAsDraft()" class="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-medium hover:bg-indigo-700 transition">Save as Draft</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. THUMBNAIL GENERATOR / STUDIO SECTION -->
+    <section id="section-thumbnail" class="tab-content hidden space-y-4">
+      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
+        <div>
+          <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
+            <i class="fa-solid fa-image text-cyan-400"></i>
+            AI Thumbnail Concept & Design Generator
+          </h2>
+          <p class="text-xs md:text-sm text-gray-400">Generate high-CTR thumbnail layouts, color palettes, bold text overlays, and AI image prompts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Video Title / Topic</label>
+            <input type="text" id="thumb-topic" placeholder="e.g. I Built a Multi-Million Dollar App in 30 Days" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Thumbnail Style</label>
+            <select id="thumb-style" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-gray-100 focus:outline-none focus:border-indigo-500">
+              <option value="mrbeast">High Contrast / Shocked Face / Bright BG</option>
+              <option value="minimalist">Clean Tech Minimalist / Dark Mode</option>
+              <option value="cinematic">Cinematic Moody / Dramatic Lighting</option>
+              <option value="vibrant">Neon Pop / Vibrant & Colorful</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="generateThumbnailConcept()" class="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/20">
+          <i class="fa-solid fa-palette"></i> Generate Thumbnail Blueprint & Prompt
+        </button>
+
+        <div id="thumb-preview-card" class="hidden bg-gray-900 border border-cyan-500/40 rounded-xl p-5 space-y-4 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-cyan-500/20 text-cyan-300 text-[10px] px-3 py-1 rounded-bl-xl font-bold uppercase">High-CTR Concept</div>
+          <div>
+            <span class="text-xs text-gray-400 block mb-1 font-semibold">Recommended Bold Text Overlay (Max 3-4 Words):</span>
+            <div id="thumb-text-overlay" class="text-lg md:text-2xl font-black text-amber-400 tracking-wide uppercase bg-black/40 p-3 rounded-lg border border-amber-500/30 text-center"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-gray-800/80 p-3 rounded-lg">
+              <span class="text-gray-400 block mb-0.5 font-semibold">Visual Layout & Focal Point:</span>
+              <p id="thumb-layout-desc" class="text-gray-200"></p>
+            </div>
+            <div class="bg-gray-800/80 p-3 rounded-lg">
+              <span class="text-gray-400 block mb-0.5 font-semibold">AI Image Prompt (Midjourney / DALL-E):</span>
+              <p id="thumb-prompt-desc" class="text-indigo-300 font-mono text-[11px]"></p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. CHARACTER & LIMIT COUNTER SECTION -->
+    <!-- 6. CHARACTER & LIMIT COUNTER SECTION -->
     <section id="section-counter" class="tab-content hidden space-y-4">
       <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl">
         <h2 class="text-base md:text-lg font-semibold text-white mb-1 flex items-center gap-2">
           <i class="fa-solid fa-align-left text-indigo-400"></i>
           Platform Caption & Character Counter
         </h2>
-        <p class="text-xs md:text-sm text-gray-400 mb-4">Validate your caption length and review live speech reading estimates.</p>
+        <p class="text-xs md:text-sm text-gray-400 mb-4">Validate caption length and review live speech reading estimates.</p>
 
         <textarea id="counter-input" oninput="updateCounts()" rows="5" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-4 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 resize-none custom-scrollbar shadow-inner" placeholder="Type or paste your video caption here..."></textarea>
 
@@ -182,7 +356,6 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-          <!-- TikTok -->
           <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3">
             <div class="flex justify-between text-xs text-gray-400 mb-1">
               <span class="font-semibold text-gray-300">TikTok</span>
@@ -192,7 +365,6 @@
               <div id="tt-bar" class="bg-emerald-500 h-full w-0 transition-all duration-200"></div>
             </div>
           </div>
-          <!-- Instagram -->
           <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3">
             <div class="flex justify-between text-xs text-gray-400 mb-1">
               <span class="font-semibold text-gray-300">Instagram</span>
@@ -202,7 +374,6 @@
               <div id="ig-bar" class="bg-emerald-500 h-full w-0 transition-all duration-200"></div>
             </div>
           </div>
-          <!-- YouTube Shorts -->
           <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3">
             <div class="flex justify-between text-xs text-gray-400 mb-1">
               <span class="font-semibold text-gray-300">YT Title</span>
@@ -212,7 +383,6 @@
               <div id="yt-bar" class="bg-emerald-500 h-full w-0 transition-all duration-200"></div>
             </div>
           </div>
-          <!-- X / Twitter -->
           <div class="bg-gray-900 border border-gray-700/80 rounded-xl p-3">
             <div class="flex justify-between text-xs text-gray-400 mb-1">
               <span class="font-semibold text-gray-300">X (Twitter)</span>
@@ -232,56 +402,21 @@
       </div>
     </section>
 
-    <!-- 4. SCRIPT OUTLINE BUILDER SECTION -->
-    <section id="section-script" class="tab-content hidden space-y-4">
-      <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl">
-        <h2 class="text-base md:text-lg font-semibold text-white mb-1 flex items-center gap-2">
-          <i class="fa-solid fa-scroll text-emerald-400"></i>
-          Short-Form Video Script Outline Builder
-        </h2>
-        <p class="text-xs md:text-sm text-gray-400 mb-4">Structure your video into a proven retention formula: Hook, Value, and Call-to-Action.</p>
-
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold text-amber-400 mb-1">1. THE HOOK (0-3s)</label>
-            <input id="script-hook" type="text" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 shadow-inner" placeholder="e.g. Stop making this huge mistake when editing videos..." />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-blue-400 mb-1">2. THE VALUE / BODY (3-45s)</label>
-            <textarea id="script-body" rows="4" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 resize-none custom-scrollbar shadow-inner" placeholder="Point 1: ...&#10;Point 2: ...&#10;Point 3: ..."></textarea>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-emerald-400 mb-1">3. CALL TO ACTION (CTA)</label>
-            <input id="script-cta" type="text" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-gray-100 focus:outline-none focus:border-indigo-500 shadow-inner" placeholder="e.g. Follow for more daily creator tips!" />
-          </div>
-        </div>
-
-        <div class="flex justify-between items-center pt-4">
-          <button onclick="clearScript()" class="text-xs text-gray-400 hover:text-red-400 transition">Clear Fields</button>
-          <button onclick="saveScriptDraft()" class="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-xs font-medium hover:bg-emerald-700 flex items-center gap-2 transition shadow-lg shadow-emerald-600/20">
-            <i class="fa-solid fa-floppy-disk"></i> Save Complete Script
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. SAVED DRAFTS SECTION -->
+    <!-- 7. SAVED DRAFTS SECTION -->
     <section id="section-drafts" class="tab-content hidden space-y-4">
       <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl">
         <div class="flex items-center justify-between mb-4">
           <div>
             <h2 class="text-base md:text-lg font-semibold text-white flex items-center gap-2">
-              <i class="fa-solid fa-bookmark text-purple-400"></i>
+              <i class="fa-solid fa-bookmark text-amber-400"></i>
               Your Saved Local Drafts
             </h2>
-            <p class="text-xs md:text-sm text-gray-400">Drafts are saved securely in your browser storage.</p>
+            <p class="text-xs md:text-sm text-gray-400">All your saved SEO bundles, stories, lyrics, and captions.</p>
           </div>
           <button onclick="clearAllDrafts()" class="text-xs text-red-400 hover:text-red-300 transition">Clear All</button>
         </div>
 
-        <div id="drafts-list" class="space-y-3">
-          <!-- Dynamically Rendered -->
-        </div>
+        <div id="drafts-list" class="space-y-3"></div>
       </div>
     </section>
 
@@ -289,7 +424,7 @@
 
   <!-- Footer Info -->
   <footer class="max-w-6xl w-full mx-auto px-4 py-6 text-center text-xs text-gray-500 border-t border-gray-800/80 mt-auto">
-    Viral Creator Toolkit · Optimized for Cross-Device Web & PWA Deployment
+    Apex Mobility System · The Ultimate Creator Suite
   </footer>
 
   <!-- Toast Notification -->
@@ -316,14 +451,7 @@
       { category: 'educational', text: 'Stop scrolling if you want to learn how to build [project].' }
     ];
 
-    const hashtagPresets = {
-      viral: ['#viral', '#trending', '#fyp', '#foryou', '#creator', '#contentcreator', '#reels', '#shorts', '#explore'],
-      tech: ['#tech', '#developer', '#coding', '#software', '#webdev', '#android', '#github', '#ai', '#programming'],
-      business: ['#entrepreneur', '#business', '#marketing', '#productivity', '#sidehustle', '#success', '#growth'],
-      lifestyle: ['#vlog', '#dailyvlog', '#lifestyle', '#mindset', '#motivation', '#inspiration', '#routine']
-    };
-
-    let drafts = JSON.parse(localStorage.getItem('viral_creator_drafts_v2') || '[]');
+    let drafts = JSON.parse(localStorage.getItem('apex_mobility_drafts_v3') || '[]');
     let currentFilter = 'all';
 
     // --- Tab Switcher ---
@@ -342,6 +470,52 @@
       if (tabName === 'drafts') renderDrafts();
     }
 
+    // --- vidIQ SEO & KEYWORD GENERATOR ---
+    function runSeoAnalysis() {
+      const keyword = document.getElementById('seo-keyword-input').value.trim();
+      if (!keyword) {
+        showToast('Please enter a target keyword or topic first.');
+        return;
+      }
+
+      document.getElementById('seo-results-area').classList.remove('hidden');
+      
+      // Simulate vidIQ metrics
+      document.getElementById('metric-volume').innerText = `${Math.floor(Math.random() * 20) + 80}/100 (Very High)`;
+      document.getElementById('metric-competition').innerText = ['Low', 'Medium', 'Fair'][Math.floor(Math.random() * 3)];
+      document.getElementById('metric-overall').innerText = `${Math.floor(Math.random() * 10) + 90}/100 (Optimized)`;
+
+      // Generate Clickable Titles
+      const titlesList = document.getElementById('seo-titles-list');
+      titlesList.innerHTML = '';
+      const generatedTitles = [
+        `The Truth About ${keyword} That Nobody Tells You!`,
+        `How to Master ${keyword} in 2026 (Step-by-Step)`,
+        `Why 99% Fail at ${keyword} (And How to Fix It)`,
+        `I Tested ${keyword} For 30 Days — Here’s What Happened`
+      ];
+
+      generatedTitles.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'bg-gray-900 border border-gray-700/80 p-3 rounded-xl flex justify-between items-center gap-3';
+        div.innerHTML = `
+          <span class="text-xs text-gray-200 font-medium">${t}</span>
+          <button onclick="copyText('${t}')" class="px-3 py-1.5 bg-gray-800 hover:bg-indigo-600 text-gray-300 hover:text-white rounded-lg text-xs shrink-0 transition">Copy</button>
+        `;
+        titlesList.appendChild(div);
+      });
+
+      // Generate Description & Hashtags
+      const descriptionText = `In this video, we dive deep into ${keyword}. If you've been struggling or looking for the ultimate guide on ${keyword}, this masterclass covers everything you need to know.\n\nTimestamps:\n0:00 - Introduction\n1:30 - The Core Strategy\n5:00 - Advanced Tips\n\n#${keyword.replace(/\s+/g, '')} #viral #creator #trending`;
+      document.getElementById('seo-desc-output').value = descriptionText;
+
+      // Generate Tags
+      const tags = `${keyword}, how to ${keyword}, ${keyword} 2026, best ${keyword} tutorial, viral ${keyword}, creator tips`;
+      document.getElementById('seo-tags-output').value = tags;
+
+      showToast('vidIQ SEO Analysis Complete!');
+    }
+
     // --- Hooks Generator ---
     function renderHooks(filter = currentFilter) {
       currentFilter = filter;
@@ -349,7 +523,6 @@
       const container = document.getElementById('hooks-container');
       container.innerHTML = '';
 
-      // Update button styling
       document.querySelectorAll('.hook-cat-btn').forEach(btn => {
         if (btn.innerText.toLowerCase().includes(filter) || (filter === 'all' && btn.innerText === 'All')) {
           btn.className = 'hook-cat-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-600 text-white transition';
@@ -373,39 +546,102 @@
         card.className = 'bg-gray-900 border border-gray-700/80 p-4 rounded-xl flex justify-between items-center gap-3 hover:border-indigo-500/50 transition-all';
         card.innerHTML = `
           <p class="text-xs md:text-sm text-gray-200">${h.text}</p>
-          <button onclick="copyText('${h.text.replace(/'/g, "\\'")}')" class="px-3 py-2 bg-gray-800 text-gray-300 hover:text-white hover:bg-indigo-600 rounded-lg text-xs font-medium shrink-0 transition">
-            Copy
-          </button>
+          <button onclick="copyText('${h.text.replace(/'/g, "\\'")}')" class="px-3 py-2 bg-gray-800 text-gray-300 hover:text-white hover:bg-indigo-600 rounded-lg text-xs font-medium shrink-0 transition">Copy</button>
         `;
         container.appendChild(card);
       });
     }
 
-    function filterHooks(cat) {
-      renderHooks(cat);
+    function filterHooks(cat) { renderHooks(cat); }
+
+    // --- AI Story & Script Writer ---
+    function generateAiStory() {
+      const topic = document.getElementById('story-topic').value.trim() || 'A journey of self-discovery';
+      const genre = document.getElementById('story-genre').value;
+
+      let storyText = `[TITLE]: The Awakening of ${topic}\n\n`;
+      if (genre === 'motivational') {
+        storyText += `[INTRODUCTION]\nIn every person's life, there is a turning point where comfort dies and true growth begins. Today, we talk about ${topic}.\n\n[BODY]\nMost people wait for the perfect moment. But perfection is an illusion designed to keep you safe and stagnant. When you commit fully to ${topic}, the universe responds with unexpected allies and resources. Remember: your current chapter is not your final destination.\n\n[CONCLUSION]\nTake that first bold step today. The future belongs to those who dare to build it.`;
+      } else if (genre === 'scifi') {
+        storyText += `[ACT I: THE ANOMALY]\nThe console flickered with green hexadecimal code. ${topic} wasn't just data; it was a living broadcast originating from coordinates that shouldn't exist.\n\n[ACT II: THE DISCOVERY]\nDr. Aris stared at the monitor as the waveform aligned. The message was clear: 'We tried to warn you.' But who was sending it across the dimensional barrier?\n\n[CLIMAX]\nWith trembling hands, Aris pressed execute, initiating a sequence that would redefine human history forever.`;
+      } else {
+        storyText += `[SCENE START]\nIt started on an ordinary Tuesday when everything shifted. ${topic} seemed impossible at first glance, a distant dream.\n\n[DEVELOPMENT]\nMonths of tireless dedication, sleepless nights, and moments of profound doubt followed. Yet, resilience prevailed.\n\n[RESOLUTION]\nStanding at the peak, looking back at the valley of doubt, the realization hit: the struggle was the reward all along.`;
+      }
+
+      document.getElementById('story-output').value = storyText;
+      showToast('Story & script generated successfully!');
     }
 
-    // --- Hashtags ---
-    function generateHashtags(key) {
-      const tags = hashtagPresets[key] || [];
-      const textarea = document.getElementById('hashtag-output');
-      textarea.value = tags.join(' ');
-      document.getElementById('hashtag-count-display').innerText = `${tags.length} hashtags`;
-      showToast('Hashtag block generated!');
+    function saveStoryAsDraft() {
+      const content = document.getElementById('story-output').value;
+      if (!content) { showToast('Nothing to save.'); return; }
+      drafts.push({ id: Date.now(), title: `Story: ${document.getElementById('story-topic').value || 'Untitled'}`, content });
+      saveDraftsStorage();
+      showToast('Story saved to drafts!');
+    }
+
+    // --- Song Writer ---
+    function generateSongLyrics() {
+      const theme = document.getElementById('song-theme').value.trim() || 'Ambition & Success';
+      const genre = document.getElementById('song-genre').value;
+
+      let lyrics = `[SONG THEME]: ${theme} (${genre.toUpperCase()})\n\n`;
+      if (genre === 'hiphop') {
+        lyrics += `[VERSE 1]\nStarted from the bottom, now we aiming for the peak,\nWorking seven days a week, never taking what they speak,\nFocused on ${theme}, yeah I put in all the time,\nTurning every single struggle into rhythm and rhyme.\n\n[CHORUS]\nWe going straight to the top, never gonna stop!\nGot the vision in my eyes and the bass in the drop!\nYeah we living our dream, building up the team,\nNothing can break or fracture this supreme.\n\n[BRIDGE]\nThey doubted the hustle, they doubted the drive...\nNow watch how we thrive!`;
+      } else {
+        lyrics += `[VERSE 1]\nMidnight shadows fading as the morning light breaks through,\nThinking 'bout the promises and all we planned to do.\nWith ${theme} as our compass through the stormy weather.\n\n[CHORUS]\nOh, we're holding on together, flying high above the clouds,\nSinging out our anthem to the cheering, endless crowds.\nNothing's gonna stop us now.\n\n[OUTRO]\nFade out into the golden sunrise...`;
+      }
+
+      document.getElementById('song-output').value = lyrics;
+      showToast('Song lyrics generated successfully!');
+    }
+
+    function saveSongAsDraft() {
+      const content = document.getElementById('song-output').value;
+      if (!content) { showToast('Nothing to save.'); return; }
+      drafts.push({ id: Date.now(), title: `Song: ${document.getElementById('song-theme').value || 'Untitled'}`, content });
+      saveDraftsStorage();
+      showToast('Song saved to drafts!');
+    }
+
+    // --- Thumbnail Generator ---
+    function generateThumbnailConcept() {
+      const topic = document.getElementById('thumb-topic.value') || document.getElementById('thumb-topic').value.trim() || 'Viral Video';
+      const style = document.getElementById('thumb-style').value;
+
+      document.getElementById('thumb-preview-card').classList.remove('hidden');
+
+      let boldText = "EXPOSED!";
+      let layout = "High-contrast split screen with subject on right looking shocked.";
+      let prompt = "Cinematic high-contrast YouTube thumbnail, bold vibrant lighting, 8k resolution, photorealistic.";
+
+      if (style === 'mrbeast') {
+        boldText = "I DID THIS?!";
+        layout = "Extreme close-up shocked face on left, glowing object or money on right, bright saturated background.";
+        prompt = "MrBeast style YouTube thumbnail, highly saturated colorful background, exaggerated facial expression, sharp focus, 8k --ar 16:9";
+      } else if (style === 'minimalist') {
+        boldText = "THE TRUTH";
+        layout = "Dark moody gradient background, glowing neon text in center, clean minimalist tech aesthetic.";
+        prompt = "Minimalist dark tech YouTube thumbnail, sleek UI elements, glowing cyan accents, professional lighting --ar 16:9";
+      } else if (style === 'cinematic') {
+        boldText = "GAME OVER";
+        layout = "Cinematic dramatic lighting, shadows on face, intense atmosphere, film grain.";
+        prompt = "Cinematic film still thumbnail, dramatic rim lighting, moody color grading, volumetric smoke --ar 16:9";
+      }
+
+      document.getElementById('thumb-text-overlay').innerText = boldText;
+      document.getElementById('thumb-layout-desc').innerText = layout;
+      document.getElementById('thumb-prompt-desc').innerText = prompt;
+      showToast('Thumbnail concept generated!');
     }
 
     // --- Character & Word Counter ---
     function updateCounts() {
       const text = document.getElementById('counter-input').value;
       const len = text.length;
-
-      // Word count calculation
       const words = text.trim() ? text.trim().split(/\s+/).length : 0;
       document.getElementById('word-count').innerText = words;
-
-      // Estimated speech time (avg 130 words per minute -> ~2.16 words per second)
-      const seconds = Math.ceil(words / 2.2);
-      document.getElementById('speech-time').innerText = `${seconds}s`;
+      document.getElementById('speech-time').innerText = `${Math.ceil(words / 2.2)}s`;
 
       updateBar('tt', len, 2200);
       updateBar('ig', len, 2200);
@@ -417,73 +653,37 @@
       const limitEl = document.getElementById(`${platform}-limit`);
       const barEl = document.getElementById(`${platform}-bar`);
       limitEl.innerText = `${len} / ${limit}`;
-
       const pct = Math.min((len / limit) * 100, 100);
       barEl.style.width = `${pct}%`;
-
-      if (len > limit) {
-        barEl.className = 'bg-red-500 h-full transition-all duration-200';
-      } else {
-        barEl.className = 'bg-emerald-500 h-full transition-all duration-200';
-      }
+      barEl.className = len > limit ? 'bg-red-500 h-full transition-all duration-200' : 'bg-emerald-500 h-full transition-all duration-200';
     }
 
-    // --- Script Builder ---
-    function saveScriptDraft() {
-      const hook = document.getElementById('script-hook').value;
-      const body = document.getElementById('script-body').value;
-      const cta = document.getElementById('script-cta').value;
-
-      if (!hook && !body) {
-        showToast('Please enter script content first.');
-        return;
-      }
-
-      const fullScript = `[HOOK]\n${hook}\n\n[BODY]\n${body}\n\n[CTA]\n${cta}`;
-      drafts.push({ id: Date.now(), title: `Script: ${hook.substring(0, 20) || 'Untitled'}...`, content: fullScript });
-      saveDraftsStorage();
-      showToast('Script saved to drafts!');
-      clearScript();
-    }
-
-    function clearScript() {
-      document.getElementById('script-hook').value = '';
-      document.getElementById('script-body').value = '';
-      document.getElementById('script-cta').value = '';
-    }
-
-    // --- Drafts Management ---
     function saveCurrentDraft() {
       const text = document.getElementById('counter-input').value;
-      if (!text.trim()) {
-        showToast('Draft is empty.');
-        return;
-      }
+      if (!text.trim()) { showToast('Draft is empty.'); return; }
       drafts.push({ id: Date.now(), title: text.substring(0, 25) + '...', content: text });
       saveDraftsStorage();
       showToast('Saved to drafts!');
     }
 
     function saveDraftsStorage() {
-      localStorage.setItem('viral_creator_drafts_v2', JSON.stringify(drafts));
+      localStorage.setItem('apex_mobility_drafts_v3', JSON.stringify(drafts));
       document.getElementById('draft-count').innerText = drafts.length;
     }
 
     function renderDrafts() {
       const list = document.getElementById('drafts-list');
       list.innerHTML = '';
-
       if (drafts.length === 0) {
-        list.innerHTML = '<p class="text-sm text-gray-500 italic text-center py-6">No saved drafts yet. Save captions or scripts for quick access.</p>';
+        list.innerHTML = '<p class="text-sm text-gray-500 italic text-center py-6">No saved drafts yet.</p>';
         return;
       }
-
       drafts.forEach(d => {
         const item = document.createElement('div');
         item.className = 'bg-gray-900 border border-gray-700/80 p-4 rounded-xl flex flex-col sm:flex-row justify-between items-start gap-4';
         item.innerHTML = `
           <div class="space-y-1 w-full overflow-hidden">
-            <h4 class="text-xs md:text-sm font-semibold text-indigo-400">${d.title}</h4>
+            <h4 class="text-xs md:text-sm font-semibold text-amber-400">${d.title}</h4>
             <p class="text-xs text-gray-300 whitespace-pre-wrap break-words">${d.content}</p>
           </div>
           <div class="flex gap-2 shrink-0 self-end sm:self-start">
@@ -503,7 +703,7 @@
     }
 
     function clearAllDrafts() {
-      if (confirm('Are you sure you want to delete all saved drafts?')) {
+      if (confirm('Are you sure you want to clear all drafts?')) {
         drafts = [];
         saveDraftsStorage();
         renderDrafts();
@@ -515,22 +715,20 @@
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(drafts, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `creator_toolkit_backup_${new Date().toISOString().slice(0,10)}.json`);
+      downloadAnchor.setAttribute("download", `apex_mobility_backup_${new Date().toISOString().slice(0,10)}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      showToast('Backup downloaded successfully!');
+      showToast('Backup downloaded!');
     }
 
-    // --- Helpers & Toasts ---
     function copyText(str) {
       navigator.clipboard.writeText(str).then(() => showToast('Copied to clipboard!'));
     }
 
     function copyToClipboard(id) {
       const val = document.getElementById(id).value;
-      if (val) copyText(val);
-      else showToast('Nothing to copy.');
+      if (val) copyText(val); else showToast('Nothing to copy.');
     }
 
     function showToast(msg) {
