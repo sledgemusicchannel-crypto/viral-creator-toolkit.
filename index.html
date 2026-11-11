@@ -99,7 +99,7 @@
       </button>
     </div>
 
-    <!-- 1. SOCIAL GROWTH AUDITOR SECTION (NEW) -->
+    <!-- 1. SOCIAL GROWTH AUDITOR SECTION -->
     <section id="section-audit" class="tab-content space-y-4">
       <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
         <div>
@@ -107,7 +107,7 @@
             <i class="fa-solid fa-bullseye text-cyan-400"></i>
             Social Media Channel Link Growth Auditor
           </h2>
-          <p class="text-xs md:text-sm text-gray-400">Paste your TikTok, Instagram, YouTube, Facebook, or X (Twitter) profile link or handle to receive customized growth strategies, algorithm hacks, and engagement blueprints.</p>
+          <p class="text-xs md:text-sm text-gray-400">Paste your TikTok, Instagram, YouTube, Facebook, or X profile link or handle to receive customized growth strategies and algorithm blueprints.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -129,7 +129,6 @@
           <i class="fa-solid fa-wand-magic-sparkles"></i> Audit Link & Generate Growth Strategy
         </button>
 
-        <!-- Audit Results Box -->
         <div id="audit-results-box" class="hidden space-y-4 pt-2">
           <div class="bg-gray-900 border border-cyan-500/30 rounded-xl p-5 space-y-4">
             <div class="flex items-center justify-between border-b border-gray-800 pb-3">
@@ -215,7 +214,7 @@
       </div>
     </section>
 
-    <!-- 3. REAL CANVAS THUMBNAIL STUDIO (JPEG/PNG EXPORT) -->
+    <!-- 3. REAL CANVAS THUMBNAIL STUDIO (WEBVIEW COMPATIBLE) -->
     <section id="section-thumbnail" class="tab-content hidden space-y-4">
       <div class="bg-gray-800/60 border border-gray-700/60 rounded-2xl p-5 shadow-xl space-y-4">
         <div>
@@ -223,7 +222,7 @@
             <i class="fa-solid fa-image text-amber-400"></i>
             Real Canvas Thumbnail Studio (JPEG / PNG Export)
           </h2>
-          <p class="text-xs md:text-sm text-gray-400">Design high-CTR thumbnails directly in your browser and instantly download them as high-res JPEG or PNG image files.</p>
+          <p class="text-xs md:text-sm text-gray-400">Design high-CTR thumbnails directly in your browser and download them instantly.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -250,7 +249,6 @@
           </div>
         </div>
 
-        <!-- Live Canvas Preview Container -->
         <div class="flex flex-col items-center justify-center bg-gray-900 border border-gray-700 rounded-2xl p-4 space-y-4">
           <div class="w-full max-w-xl aspect-[16/9] relative rounded-xl overflow-hidden shadow-2xl border border-gray-700">
             <canvas id="thumbnailCanvas" width="1280" height="720" class="w-full h-full object-contain"></canvas>
@@ -415,7 +413,6 @@
 
   <!-- JavaScript Logic -->
   <script>
-    // --- Data & State ---
     const hooksData = [
       { category: 'curiosity', text: 'If you are doing [topic], you are probably doing it wrong.' },
       { category: 'curiosity', text: 'This secret feature in [tool/app] will save you hours of work.' },
@@ -431,10 +428,14 @@
       { category: 'educational', text: 'Stop scrolling if you want to learn how to build [project].' }
     ];
 
-    let drafts = JSON.parse(localStorage.getItem('apex_mobility_drafts_v4') || '[]');
+    let drafts = [];
+    try {
+      drafts = JSON.parse(localStorage.getItem('apex_mobility_drafts_v5') || '[]');
+    } catch(e) {
+      drafts = [];
+    }
     let currentFilter = 'all';
 
-    // --- Tab Switcher ---
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -442,10 +443,14 @@
         btn.classList.add('bg-gray-800', 'text-gray-400');
       });
 
-      document.getElementById(`section-${tabName}`).classList.remove('hidden');
+      const targetSection = document.getElementById(`section-${tabName}`);
+      if (targetSection) targetSection.classList.remove('hidden');
+      
       const activeBtn = document.getElementById(`tab-${tabName}`);
-      activeBtn.classList.remove('bg-gray-800', 'text-gray-400');
-      activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-gray-800', 'text-gray-400');
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+      }
 
       if (tabName === 'thumbnail') {
         setTimeout(drawThumbnail, 50);
@@ -453,7 +458,6 @@
       if (tabName === 'drafts') renderDrafts();
     }
 
-    // --- 1. SOCIAL GROWTH AUDITOR ---
     function runSocialAudit() {
       const linkInput = document.getElementById('audit-link-input').value.trim() || '@apexmobility';
       const platform = document.getElementById('audit-platform').value;
@@ -466,45 +470,25 @@
       let suggestions = [];
 
       if (platform === 'tiktok') {
-        blueprint = "Focus heavily on the 0-3 second hook. Leverage trending audio tracks at low volume under your voiceover. Keep video pacing under 25 seconds for maximum retention loops.";
-        timing = "Peak posting times: 6:00 PM – 9:00 PM local time. Post 2 to 3 times daily.";
-        suggestions = [
-          "Use pattern-interrupt visuals in the first frame.",
-          "Add dynamic closed captions with highlight colors.",
-          "Reply to top comments with a brand new video response."
-        ];
+        blueprint = "Focus heavily on the 0-3 second hook. Leverage trending audio tracks at low volume under your voiceover.";
+        timing = "Peak posting times: 6:00 PM – 9:00 PM local time.";
+        suggestions = ["Use pattern-interrupt visuals in the first frame.", "Add dynamic closed captions.", "Reply to top comments with video responses."];
       } else if (platform === 'youtube') {
-        blueprint = "Prioritize High-CTR Thumbnails and compelling opening hooks. Optimize title tags with primary keywords in the first 40 characters.";
-        timing = "Peak upload times: 2:00 PM – 4:00 PM weekdays, 10:00 AM weekends.";
-        suggestions = [
-          "Design thumbnails with expressive faces and high contrast 3-word text.",
-          "Structure long-form videos with clear chapter timestamps.",
-          "Cross-promote long-form videos using YouTube Shorts."
-        ];
+        blueprint = "Prioritize High-CTR Thumbnails and compelling opening hooks. Optimize title tags with primary keywords.";
+        timing = "Peak upload times: 2:00 PM – 4:00 PM weekdays.";
+        suggestions = ["Design thumbnails with expressive faces.", "Structure videos with chapter timestamps.", "Cross-promote with Shorts."];
       } else if (platform === 'instagram') {
-        blueprint = "Blend aesthetic carousels with high-velocity Reels. Use 5 to 8 hyper-relevant niche hashtags rather than spamming 30.";
+        blueprint = "Blend aesthetic carousels with high-velocity Reels. Use 5 to 8 niche hashtags.";
         timing = "Peak posting times: 11:00 AM – 1:00 PM and 7:00 PM – 9:00 PM.";
-        suggestions = [
-          "Use Instagram Stories daily for behind-the-scenes polls and Q&As.",
-          "Pin your top 3 performing Reels to your profile grid.",
-          "Collaborate with creators in your niche using Collab posts."
-        ];
+        suggestions = ["Use Instagram Stories daily for polls.", "Pin top performing Reels.", "Collaborate with niche creators."];
       } else if (platform === 'facebook') {
-        blueprint = "Focus on community engagement, shareable long-form text posts, and native vertical video uploads.";
+        blueprint = "Focus on community engagement, shareable long-form text posts, and native vertical video.";
         timing = "Peak hours: 1:00 PM – 4:00 PM Thursday and Friday.";
-        suggestions = [
-          "Share behind-the-scenes building logs and developer updates.",
-          "Encourage discussion by ending captions with a specific question.",
-          "Leverage Facebook Groups to distribute content organically."
-        ];
+        suggestions = ["Share behind-the-scenes building logs.", "End captions with a question.", "Leverage Facebook Groups."];
       } else {
-        blueprint = "Post short punchy threads (X/Twitter) breaking down industry insights or build-in-public updates.";
-        timing = "Peak hours: 8:00 AM – 10:00 AM and 12:00 PM.";
-        suggestions = [
-          "Use the 'hook -> value -> CTA' thread structure.",
-          "Engage with major accounts in your niche within 5 minutes of their posts.",
-          "Pin your best introductory thread to your profile."
-        ];
+        blueprint = "Post short punchy threads breaking down industry insights.";
+        timing = "Peak hours: 8:00 AM – 10:00 AM.";
+        suggestions = ["Use 'hook -> value -> CTA' thread structure.", "Engage with major accounts.", "Pin best introductory thread."];
       }
 
       document.getElementById('audit-blueprint-text').innerText = blueprint;
@@ -521,15 +505,14 @@
       showToast('Social growth audit completed successfully!');
     }
 
-    // --- 2. vidIQ SEO ENGINE ---
     function runSeoAnalysis() {
       const keyword = document.getElementById('seo-keyword-input').value.trim();
       if (!keyword) { showToast('Please enter a target keyword.'); return; }
 
       document.getElementById('seo-results-area').classList.remove('hidden');
-      document.getElementById('metric-volume').innerText = `${Math.floor(Math.random() * 15) + 85}/100 (Very High)`;
-      document.getElementById('metric-competition').innerText = ['Low', 'Medium'][Math.floor(Math.random() * 2)];
-      document.getElementById('metric-overall').innerText = `${Math.floor(Math.random() * 8) + 92}/100 (Optimized)`;
+      document.getElementById('metric-volume').innerText = '90/100 (Very High)';
+      document.getElementById('metric-competition').innerText = 'Medium';
+      document.getElementById('metric-overall').innerText = '94/100 (Optimized)';
 
       const titlesList = document.getElementById('seo-titles-list');
       titlesList.innerHTML = '';
@@ -550,24 +533,24 @@
         titlesList.appendChild(div);
       });
 
-      document.getElementById('seo-desc-output').value = `In this video, we dive deep into ${keyword}. If you've been struggling or looking for the ultimate guide on ${keyword}, this masterclass covers everything.\n\n#${keyword.replace(/\s+/g, '')} #viral #creator #trending`;
-      document.getElementById('seo-tags-output').value = `${keyword}, how to ${keyword}, ${keyword} 2026, best ${keyword} tutorial, viral ${keyword}`;
+      document.getElementById('seo-desc-output').value = `In this video, we dive deep into ${keyword}. Masterclass guide.\n\n#${keyword.replace(/\s+/g, '')} #viral #creator`;
+      document.getElementById('seo-tags-output').value = `${keyword}, how to ${keyword}, ${keyword} 2026, viral ${keyword}`;
 
       showToast('vidIQ SEO Analysis Complete!');
     }
 
-    // --- 3. REAL CANVAS THUMBNAIL STUDIO (JPEG/PNG) ---
+    // --- WEBVIEW SAFE CANVAS THUMBNAIL DRAWER ---
     function drawThumbnail() {
       const canvas = document.getElementById('thumbnailCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
       const mainText = document.getElementById('thumb-main-text').value || "I DID THIS?!";
       const subText = document.getElementById('thumb-sub-text').value || "SHOCKING RESULTS";
       const badgeText = document.getElementById('thumb-badge').value || "PROVEN";
       const theme = document.getElementById('thumb-bg-theme').value;
 
-      // 1. Background Gradient
       let grad = ctx.createLinearGradient(0, 0, 1280, 720);
       if (theme === 'fire') {
         grad.addColorStop(0, '#7f1d1d'); grad.addColorStop(0.5, '#b91c1c'); grad.addColorStop(1, '#ea580c');
@@ -581,23 +564,19 @@
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1280, 720);
 
-      // 2. Vignette shadow
       ctx.fillStyle = 'rgba(0,0,0,0.4)';
       ctx.fillRect(0, 0, 1280, 720);
 
-      // 3. Badge Tag
+      // WebView-safe rectangle badge (No roundRect dependency)
       if (badgeText) {
         ctx.fillStyle = '#f59e0b';
-        ctx.beginPath();
-        ctx.roundRect(80, 80, 260, 60, 12);
-        ctx.fill();
+        ctx.fillRect(80, 80, 280, 64);
         ctx.fillStyle = '#000000';
         ctx.font = 'bold 28px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(badgeText.toUpperCase(), 210, 120);
+        ctx.fillText(badgeText.toUpperCase(), 220, 122);
       }
 
-      // 4. Main Bold Text Overlay
       ctx.textAlign = 'left';
       ctx.fillStyle = '#ffffff';
       ctx.font = '900 88px sans-serif';
@@ -606,21 +585,19 @@
       ctx.shadowOffsetX = 6;
       ctx.shadowOffsetY = 6;
 
-      // Word wrapping / line rendering
       ctx.fillText(mainText.toUpperCase(), 80, 340);
 
-      // 5. Subtitle Text
       ctx.fillStyle = '#38bdf8';
       ctx.font = 'bold 56px sans-serif';
       ctx.fillText(subText.toUpperCase(), 80, 440);
 
-      // Reset shadow
       ctx.shadowColor = 'transparent';
       ctx.shadowBlur = 0;
     }
 
     function downloadThumbnail(format) {
       const canvas = document.getElementById('thumbnailCanvas');
+      if (!canvas) return;
       const mime = format === 'png' ? 'image/png' : 'image/jpeg';
       const ext = format === 'png' ? 'png' : 'jpg';
 
@@ -631,7 +608,6 @@
       showToast(`Thumbnail downloaded as ${ext.toUpperCase()}!`);
     }
 
-    // --- 4. VIRAL HOOKS ---
     function renderHooks(filter = currentFilter) {
       currentFilter = filter;
       const searchVal = document.getElementById('hook-search').value.toLowerCase();
@@ -664,18 +640,11 @@
 
     function filterHooks(cat) { renderHooks(cat); }
 
-    // --- 5. STORY WRITER ---
     function generateAiStory() {
       const topic = document.getElementById('story-topic').value.trim() || 'A journey of self-discovery';
       const genre = document.getElementById('story-genre').value;
 
-      let storyText = `[TITLE]: The Awakening of ${topic}\n\n`;
-      if (genre === 'motivational') {
-        storyText += `[INTRODUCTION]\nIn every person's life, there is a turning point where comfort dies and true growth begins. Today, we talk about ${topic}.\n\n[BODY]\nMost people wait for the perfect moment. But perfection is an illusion designed to keep you safe. When you commit fully to ${topic}, the universe responds with unexpected allies. Remember: your current chapter is not your final destination.\n\n[CONCLUSION]\nTake that first bold step today.`;
-      } else {
-        storyText += `[SCENE START]\nIt started on an ordinary Tuesday when everything shifted. ${topic} seemed impossible at first glance, a distant dream.\n\n[RESOLUTION]\nStanding at the peak, looking back at the valley of doubt, the realization hit: the struggle was the reward all along.`;
-      }
-
+      let storyText = `[TITLE]: The Awakening of ${topic}\n\n[INTRODUCTION]\nIn every person's life, there is a turning point where comfort dies and true growth begins. Today, we talk about ${topic}.\n\n[CONCLUSION]\nTake that first bold step today.`;
       document.getElementById('story-output').value = storyText;
       showToast('Story generated successfully!');
     }
@@ -688,13 +657,11 @@
       showToast('Saved to drafts!');
     }
 
-    // --- 6. SONG WRITER ---
     function generateSongLyrics() {
       const theme = document.getElementById('song-theme').value.trim() || 'Ambition & Success';
       const genre = document.getElementById('song-genre').value;
 
-      let lyrics = `[SONG THEME]: ${theme} (${genre.toUpperCase()})\n\n[VERSE 1]\nStarted from the bottom, now we aiming for the peak,\nWorking seven days a week, never taking what they speak,\nFocused on ${theme}, yeah I put in all the time.\n\n[CHORUS]\nWe going straight to the top, never gonna stop!\nGot the vision in my eyes and the bass in the drop!`;
-
+      let lyrics = `[SONG THEME]: ${theme} (${genre.toUpperCase()})\n\n[VERSE 1]\nStarted from the bottom, now we aiming for the peak,\nWorking seven days a week, never taking what they speak.\n\n[CHORUS]\nWe going straight to the top, never gonna stop!`;
       document.getElementById('song-output').value = lyrics;
       showToast('Song lyrics generated!');
     }
@@ -707,14 +674,17 @@
       showToast('Saved to drafts!');
     }
 
-    // --- DRAFTS & HELPERS ---
     function saveDraftsStorage() {
-      localStorage.setItem('apex_mobility_drafts_v4', JSON.stringify(drafts));
-      document.getElementById('draft-count').innerText = drafts.length;
+      try {
+        localStorage.setItem('apex_mobility_drafts_v5', JSON.stringify(drafts));
+      } catch(e) {}
+      const countEl = document.getElementById('draft-count');
+      if (countEl) countEl.innerText = drafts.length;
     }
 
     function renderDrafts() {
       const list = document.getElementById('drafts-list');
+      if (!list) return;
       list.innerHTML = '';
       if (drafts.length === 0) {
         list.innerHTML = '<p class="text-sm text-gray-500 italic text-center py-6">No saved drafts yet.</p>';
@@ -769,12 +739,13 @@
     }
 
     function copyToClipboard(id) {
-      const val = document.getElementById(id).value;
-      if (val) copyText(val); else showToast('Nothing to copy.');
+      const el = document.getElementById(id);
+      if (el && el.value) copyText(el.value); else showToast('Nothing to copy.');
     }
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
+      if (!toast) return;
       document.getElementById('toast-msg').innerText = msg;
       toast.classList.remove('translate-y-20', 'opacity-0');
       setTimeout(() => {
@@ -783,8 +754,10 @@
     }
 
     // Init
-    renderHooks();
-    saveDraftsStorage();
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHooks();
+      saveDraftsStorage();
+    });
   </script>
 </body>
 </html>
